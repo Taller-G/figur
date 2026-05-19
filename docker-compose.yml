@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:./data/stickers.db
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+
+  dev:
+    build:
+      context: .
+      target: backend-builder
+    ports:
+      - '3000:3000'
+      - '4200:4200'
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=file:./data/stickers.db
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./data:/app/data
+    command: npm run start:dev
+    profiles:
+      - dev
