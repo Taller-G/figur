@@ -4,6 +4,8 @@ import { join } from 'path';
 import { DatabaseModule } from '@infrastructure/database/database.module';
 import { StickersModule } from './modules/stickers.module';
 import { CollectionsModule } from './modules/collections.module';
+import { AuthModule } from './modules/auth.module';
+import { HealthController } from './controllers/health.controller';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { CollectionsModule } from './modules/collections.module';
     DatabaseModule,
     StickersModule,
     CollectionsModule,
+    AuthModule,
   ],
+  controllers: [HealthController],
 })
 export class AppModule {}

@@ -26,6 +26,7 @@ async function bootstrap() {
     .setTitle('Figuritas del Mundial API')
     .setDescription('API for managing football sticker collections')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   
   const document = SwaggerModule.createDocument(app, config);
