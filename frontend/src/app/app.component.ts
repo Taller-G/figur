@@ -7,23 +7,28 @@ import { Component } from '@angular/core';
       <mat-icon>sports_soccer</mat-icon>
       <span style="margin-left: 10px;">Figuritas del Mundial</span>
       <span class="toolbar-spacer"></span>
-      
-      <button mat-button routerLink="/stickers">
+
+      <button mat-button routerLink="/album">
         <mat-icon>collections</mat-icon>
-        Figuritas
+        Álbum
       </button>
-      
+
       <button mat-button routerLink="/create-sticker">
         <mat-icon>add</mat-icon>
         Nueva Figurita
       </button>
-      
+
       <button mat-button routerLink="/collections">
         <mat-icon>folder</mat-icon>
         Colecciones
       </button>
+
+      <button mat-button routerLink="/login">
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
     </mat-toolbar>
-    
+
     <div class="container">
       <router-outlet></router-outlet>
     </div>

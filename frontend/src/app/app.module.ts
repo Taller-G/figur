@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // Angular Material
@@ -24,6 +24,9 @@ import { StickerListComponent } from './components/sticker-list/sticker-list.com
 import { StickerCardComponent } from './components/sticker-card/sticker-card.component';
 import { CreateStickerComponent } from './components/create-sticker/create-sticker.component';
 import { CollectionsComponent } from './components/collections/collections.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { CollectionsComponent } from './components/collections/collections.compo
     StickerCardComponent,
     CreateStickerComponent,
     CollectionsComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,9 @@ import { CollectionsComponent } from './components/collections/collections.compo
     MatGridListModule,
     MatChipsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
